@@ -5,6 +5,8 @@ Repository for summer internship 2024 "intro to CubeSat and Satellite Communicat
 
 ## Lab-1 Introduction to ESP32
 
+-[Datasheet ESP32](https://github.com/silicon-sat/SI-2024-CubeSat/blob/main/docs/Datasheet-ESP32.pdf)
+
 ## Lab-2 Blinking LED
 
 Description of writing a list of item:
@@ -49,7 +51,7 @@ Parameter for the LED Datashet
 
 | parameters | value |
 |------------|-------|
-|MAXforward Current|30mA|
+|MAX Forward Current|30mA|
 |Forward Voltage|1.85V|
 |Dominant Wavelength|640nm|
 |Colour|Red|
