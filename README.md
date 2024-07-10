@@ -1,5 +1,24 @@
-# SI-2024-CubeSat-SU
-📡 Repository for summer internship 2024 "intro to CubeSat and Satellite Communication"
+# 🛰️SI-2024-CubeSat-SU
+
+![cube-1024x661](https://github.com/DonaldB2003/SI-2024-CubeSat-SU/assets/173866002/1522ad85-2467-4c02-b384-0174fc47d0be)
+
+🗄️ Repository for summer internship 2024 "intro to CubeSat and Satellite Communication"
+
+# Abstractℹ️
+The report encapsulates the comprehensive learning journey of the Summer Internship 2024 on Introduction to CubeSat and Satellite Communication, providing a deep dive into CubeSat fundamentals, satellite communication principles, LoRa protocol applications, and antenna design. Participants engaged in hands-on experiences including programming ESP32 platforms, configuring TinyGS ground stations, and simulating antenna designs using 4NEC2 software. Led by expert instructors from Silicon University and the Indian Institute of Space Science and Technology, alongside industry guidance from ToSpace, the internship fostered a practical understanding of aerospace technologies. Culminating in a project to design and implement ground stations, participants showcased their skills in a poster presentation, reinforcing their readiness for future endeavors in satellite engineering and space technology.
+
+# Introduction
+
+ChatGPT
+The course on Introduction to CubeSat and Satellite Communication offers a structured learning path covering fundamental aspects of embedded systems, communication systems, LoRa technology, antenna design, and the deployment of a TinyGS ground station. Participants begin by mastering ESP32 embedded systems through practical exercises in the Arduino IDE, learning GPIO programming, PWM control for LED dimming, and interfacing with sensors. They then delve into the basics of communication systems, understanding modulation techniques, digital communication principles, and the electromagnetic spectrum.
+
+Next, the course focuses on LoRa basics, exploring spread-spectrum modulation, LoRa radio architecture, and practical implementation using ESP32 with the RA-02 LoRa module. Participants engage in hands-on labs to establish communication between two ESP32 boards equipped with LoRa modules, measuring signal strength and quality using RSSI and SNR metrics.
+
+Antenna fundamentals follow, where participants learn about radiation mechanisms, antenna types, and design principles. Using simulation software like 4NEC2, they simulate antenna configurations, optimizing performance through practical tuning with tools like the NanoVNA. This segment equips participants with essential skills for designing and refining antennas suitable for satellite communication applications.
+
+The culmination of the course involves the deployment of a TinyGS ground station. Participants apply their acquired knowledge to set up and configure ground stations using ESP32 platforms, establishing bidirectional communication with CubeSats or other satellites. Through collaborative project work, they demonstrate proficiency in satellite communication systems, antenna deployment, and operational management of ground stations, preparing them for real-world applications in the burgeoning field of CubeSats and satellite communication technologies.
+
+# CubeSat Basics
 
 # Lab Exercises
 
@@ -59,3 +78,259 @@ Parameter for the LED Datashet
 |Colour|Red|
 |Total Capacitance|  45pF |
 |Operating Range|-45 to 85C|
+
+```c
+int led = 13;
+int led2 = 2;
+int brightness=0;
+int fadeAmount=5;
+
+void setup() {
+  //initialize digital pin LED_BUILTIN as an output.
+  pinMode(led, OUTPUT);
+  pinMode(led2, OUTPUT);
+ 
+}
+
+// the loop function runs over and over again forever
+void loop() {
+ analogWrite(led,brightness);
+ analogWrite(led2,brightness);
+
+ brightness=brightness + fadeAmount;
+
+ if( brightness<=0 || brightness>=255 ){
+  fadeAmount=-fadeAmount;
+ }
+ delay(30);
+ }
+```
+
+## Lab-4(OLED)
+
+```C
+#include<SPI.h>
+#include<Wire.h>
+#include<Adafruit_GFX.h>
+#include<Adafruit_SSD1306.h>
+
+#define SCREEN_WIDTH 128 //OLED DISPLAY WIDTH
+#define SCREEN_HEIGHT 64
+#define OLED_RESET 4
+#define SCREEN_ADDRESS 0X3C
+Adafruit_SSD1306 display(SCREEN_WIDTH,SCREEN_HEIGHT,&Wire,OLED_RESET);
+
+void setup(){
+  Serial.begin(9600);
+  if(!display.begin(SSD1306_SWITCHCAPVCC,SCREEN_ADDRESS)){
+    Serial.println(F("SSD1306 allocation failed"));
+    for(;;);
+  }
+
+delay(100);
+display.clearDisplay();
+display.setTextSize(1);
+display.setTextColor(SSD1306_WHITE);
+display.setCursor(0,0);
+display.println(F("HELLO SILICONITES!!!"));
+display.display();
+delay(2000);
+}
+void loop(){}
+```
+## Lab-5(Temperature Sensor)
+```c
+#include<Wire.h>
+#include<Adafruit_GFX.h>
+#include<Adafruit_SSD1306.h>
+#include<Adafruit_Sensor.h>
+#include "DHT.h"
+
+#define SCREEN_WIDTH 128 //128OLED DISPLAY WIDTH
+#define SCREEN_HEIGHT 64
+
+Adafruit_SSD1306 display(SCREEN_WIDTH,SCREEN_HEIGHT,&Wire,-1);
+
+#define DHT11PIN 4
+
+#define DHTTYPE DHT11
+DHT dht(DHT11PIN, DHTTYPE);
+
+void setup(){
+  Serial.begin(9600);
+  dht.begin();
+
+  if(!display.begin(SSD1306_SWITCHCAPVCC,0X3C)){
+    Serial.println(F("SSD1306 allocation failed"));
+    for(;;);
+  }
+  delay(2000);
+  display.clearDisplay();
+  display.setTextColor(WHITE);
+}
+
+void loop(){
+  delay(5000);
+
+  float humi = dht.readHumidity();
+  float temp = dht.readTemperature();
+  if(isnan(humi)||isnan(temp)){
+    Serial.println("Failed to read from DHT sensor!");
+  }
+
+  display.clearDisplay();
+
+display.setTextSize(1);
+display.setTextColor(SSD1306_BLACK,SSD1306_WHITE);
+display.setCursor(0,0);
+display.print("temperature");
+display.setTextSize(2);
+display.setTextColor(SSD1306_BLACK,SSD1306_WHITE);
+display.setCursor(0,10);
+display.print(temp);
+display.print(" ");
+display.setTextSize(2);
+display.print("C");
+
+
+display.setTextSize(1);
+display.setTextColor(SSD1306_BLACK,SSD1306_WHITE);
+display.setCursor(0,35);
+display.print("HUMIDITY");
+display.setTextSize(2);
+display.setTextColor(SSD1306_BLACK,SSD1306_WHITE);
+display.setCursor(0,45);
+display.print(humi);
+display.print(" %");
+
+display.display();
+}
+```
+
+## Lab-6(Introduction to LoRa )
+### Programming for transmission
+```c
+#include<SPI.h>
+#include<LoRa.h>
+
+//std configuration
+//#define DIO0 2
+//#define RST 14
+//#define NSS 3
+//#define MOSI 23
+//#define MISO 19
+//#define SCLK 18
+
+#define DIO0 26
+#define RST 14
+#define NSS 18
+#define MOSI 27
+#define MISO 19
+#define SCLK 5
+
+int counter=0;
+
+void setup(){
+  //initiliazing serial monitor
+  Serial.begin(115200);
+  while(!Serial);
+  Serial.println("LoRa Sender");
+
+  //setup LoRa tranceiver module
+  SPI.begin(SCLK,MISO,MOSI,NSS);
+  LoRa.setPins(NSS,RST,DIO0);
+
+  //replace the lora.begin(---E-)
+  // 433E6 FOR ASIA
+  // 866E6 FOR EUROPE
+  // 915E6 FOR NORTH AMERICA
+while(!LoRa.begin(433E6)){
+  Serial.println(".");
+  delay(500);
+}
+//change sync word 0xF3 to match reciever
+//the sync word assures you dont gets LoRa message from other LoRa transceiver
+//ranges from 0-0xFF
+LoRa.setSyncWord(0XF3);
+Serial.println("LoRa Initializing OK !");
+}
+
+void loop(){
+  Serial.println("sending packet");
+  Serial.println(counter);
+
+  //send LoRa packet to recieve
+
+  LoRa.beginPacket();
+  LoRa.print("hello...");
+  LoRa.print(counter);
+  LoRa.endPacket();
+
+  counter++;
+
+  delay(1000);
+}
+
+```
+### Programming for reciever
+```c
+#include<SPI.h>
+#include<LoRa.h>
+
+//std configuration
+//#define DIO0 2
+//#define RST 14
+//#define NSS 3
+//#define MOSI 23
+//#define MISO 19
+//#define SCLK 18
+
+#define DIO0 26
+#define RST 14
+#define NSS 18
+#define MOSI 27
+#define MISO 19
+#define SCLK 5
+
+
+void setup(){
+  //initiliazing serial monitor
+  Serial.begin(115200);
+  while(!Serial);
+  Serial.println("LoRa Sender");
+
+  //setup LoRa tranceiver module
+  SPI.begin(SCLK,MISO,MOSI,NSS);
+  LoRa.setPins(NSS,RST,DIO0);
+
+  //replace the lora.begin(---E-)
+  // 433E6 FOR ASIA
+  // 866E6 FOR EUROPE
+  // 915E6 FOR NORTH AMERICA
+while(!LoRa.begin(433E6)){
+  Serial.println(".");
+  delay(5000);
+}
+//change sync word 0xF3 to match reciever
+//the sync word assures you dont gets LoRa message from other LoRa transceiver
+//ranges from 0-0xFF
+LoRa.setSyncWord(0XF3);
+Serial.println("LoRa Initializing OK !");
+}
+
+void loop() {
+  // try to parse packet
+  int packetsize = LoRa.parsePacket();
+  if(packetsize){
+    Serial.println("Recieving Packet:");
+  }
+  while(LoRa.available()){
+    String LoRaData = LoRa.readString();
+    Serial.print(LoRaData);
+  }
+    Serial.print("`with RSSI");
+    // RSSI - recieved signal strength indicator
+    Serial.print(LoRa.packetRssi());
+    Serial.println("C");
+  }
+```
