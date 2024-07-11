@@ -8,7 +8,7 @@ The report encapsulates the comprehensive learning journey of the Summer Interns
 
 # Introduction
 
-The course on Introduction to CubeSat and Satellite Communication offers a structured learning path covering fundamental aspects of embedded systems, communication systems, LoRa technology, antenna design, and the deployment of a TinyGS ground station. Participants begin by mastering ESP32 embedded systems through practical exercises in the Arduino IDE, learning GPIO programming, PWM control for LED dimming, and interfacing with sensors. They then delve into the basics of communication systems, understanding modulation techniques, digital communication principles, and the electromagnetic spectrum.
+CubeSat and Satellite Communication offers a structured learning path covering fundamental aspects of embedded systems, communication systems, LoRa technology, antenna design, and the deployment of a TinyGS ground station. Participants begin by mastering ESP32 embedded systems through practical exercises in the Arduino IDE, learning GPIO programming, PWM control for LED dimming, and interfacing with sensors. They then delve into the basics of communication systems, understanding modulation techniques, digital communication principles, and the electromagnetic spectrum.
 
 Next, the course focuses on LoRa basics, exploring spread-spectrum modulation, LoRa radio architecture, and practical implementation using ESP32 with the RA-02 LoRa module. Participants engage in hands-on labs to establish communication between two ESP32 boards equipped with LoRa modules, measuring signal strength and quality using RSSI and SNR metrics.
 
@@ -16,17 +16,31 @@ Antenna fundamentals follow, where participants learn about radiation mechanisms
 
 The culmination of the course involves the deployment of a TinyGS ground station. Participants apply their acquired knowledge to set up and configure ground stations using ESP32 platforms, establishing bidirectional communication with CubeSats or other satellites. Through collaborative project work, they demonstrate proficiency in satellite communication systems, antenna deployment, and operational management of ground stations, preparing them for real-world applications in the burgeoning field of CubeSats and satellite communication technologies.
 
-# CubeSat
+# What are CubeSats?
+CubeSats are a class of nanosatellites that use a standard size and form factor.  The standard CubeSat size uses a “one unit” or “1U” measuring 10x10x10 cms and is extendable to larger sizes; 1.5, 2, 3, 6, and even 12U. Originally developed in 1999 by California Polytechnic State University at San Luis Obispo (Cal Poly) and Stanford University to provide a platform for education and space exploration.  The development of CubeSats has advanced into its own industry with government, industry and academia collaborating for ever increasing capabilities.  CubeSats now provide a cost effective platform for science investigations, new technology demonstrations and advanced mission concepts using constellations, swarms disaggregated systems.
+![electronics-09-00482-g001](https://github.com/DonaldB2003/SI-2024-CubeSat-SU/assets/173866002/e431567e-3d6b-4a38-ae62-3e4b1ca073a9)
+
+## Why CubeSats  ? 
 <ul>
-  <li>http</li>
-  <li>jjj</li>
-</ul>
-A CubeSat is a miniaturized satellite with a standardized size and structure, often used for scientific research and educational missions in space.
-<ul>
-  <li>typically measured in cubic units of 10x10x10 centimeters. </li>
+  <li>size 4x4x4 inches </li>
+  <li>mass Mass=1.33kg </li>
   <li>allows for cost-effective development and deployment </li>
-  <li>Cost-Effective </li>
+  <li>CubeSats have lower costs compared to large satellites.</li>
+  <li>Shorter development times (CubeSats can be built within two years.)</li>
+  <li>Flexible services(CubeSats can be used for different missions and purposes).</li>
 </ul>
+
+## History
+The CubeSat concept originated in the late 1990s as a collaborative effort between Stanford University's Space Systems Development Laboratory (SSDL) and California Polytechnic State University (Cal Poly). Professors Bob Twiggs (Stanford) and Jordi Puig-Suari (Cal Poly) proposed the idea of a standardized, small satellite format to enable affordable space access for universities and other entities.
+
+## CubeSat dispenser system
+![nasa_iss_on_orbit_status_report_image_030617_945](https://github.com/DonaldB2003/SI-2024-CubeSat-SU/assets/173866002/45e17908-a8a4-44ae-afc5-d33e8230039e)
+
+A CubeSat dispenser system is a critical component used to deploy CubeSats into orbit from a host satellite or launch vehicle. These systems are designed to securely hold CubeSats of various sizes, conforming to standard dimensions like 1U, 2U, or 3U, and ensure their safe release once the host satellite reaches its designated orbit. Integrated into the payload configuration of the launch vehicle, CubeSat dispensers typically employ mechanisms such as springs, pneumatic actuators, or mechanical latches to eject CubeSats at specified velocities and orientations. This controlled deployment process not only facilitates efficient utilization of launch vehicle payload capacity but also enables multiple CubeSats to be deployed in sequence, supporting diverse mission objectives including scientific research, Earth observation, technology demonstration, and educational initiatives. By simplifying and standardizing the deployment process, CubeSat dispenser systems contribute significantly to the accessibility and cost-effectiveness of space missions involving CubeSats.
+
+
+## Layers of CubeSat
+![Screenshot 2024-07-11 160347](https://github.com/DonaldB2003/SI-2024-CubeSat-SU/assets/173866002/d08f1305-1be7-4f56-8325-a75a60d7d034)
 
 
 
