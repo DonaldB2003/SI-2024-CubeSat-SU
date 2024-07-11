@@ -58,16 +58,27 @@ A CubeSat dispenser system is a critical component used to deploy CubeSats into 
 
 ### PID
 
-# MICRO PROCESSOR
-![image](https://github.com/DonaldB2003/SI-2024-CubeSat-SU/assets/173866002/c30d280f-926a-4fe3-9fc5-a3395cf9067a)
+# MICRO PROCESSOR VS MICRO CONTROLER
+![Difference-Microprocessor-vs-Microcontroller](https://github.com/DonaldB2003/SI-2024-CubeSat-SU/assets/173866002/ef18fda0-0041-48e6-9dc7-d66584efd79a)
 
-# MICRO CONTROLER
-![image](https://github.com/DonaldB2003/SI-2024-CubeSat-SU/assets/173866002/1f1990d8-c247-4f3a-b7c9-80c1f6f6b671)
+## MICROCONTROLLER = MICROPROCESSOR+PERIPHERAL 
+
+## PERIPHERAL
 <ul>
-  <li>MICROCONTROLLER = MICROPROCESSOR+PERIPHERAL</li>
-PMW = Pulse ...........
+<li>SPI/I2C/I2S/UART: Digital Serial data.</li>
+<li>PWM: Pulse-Width Modulation</li>
+<li>Touch Sensor: Capacitive touch screens, etc.</li>
+<li>Timers</li>
+<li>ADC: Analog to Digital Converter</li>
+<li>DAC: Digital to Analog converter</li>
+<li>Bluetooth</li>
+<li>WiFi</li>
 </ul>
+
+
 ESP-32
+
+![ESP32 BLOCK](https://github.com/DonaldB2003/SI-2024-CubeSat-SU/assets/173866002/5ec3834a-2b5e-4f80-9f7a-1f6c9c4a9648)
 
 
 # WAVE GENERATION
@@ -81,16 +92,38 @@ ESP-32
 
 # Electromagnetic Spectrum
 
-VHF
-UHF
+The electromagnetic spectrum refers to the entire range of wavelengths or frequencies of electromagnetic radiation, which includes all types of light. This spectrum ranges from very low-frequency radio waves to very high-frequency gamma rays. Here are the key segments of the electromagnetic spectrum, ordered from longest to shortest wavelengths (or lowest to highest frequencies):
+
+![radio-frequency-bands](https://github.com/DonaldB2003/SI-2024-CubeSat-SU/assets/173866002/ac2d60d7-b8f9-4115-b2af-bab1424c9d72)
+
+
+
+
+## EM Waves
+
+![istockphoto-1194626452-612x612](https://github.com/DonaldB2003/SI-2024-CubeSat-SU/assets/173866002/5ed674c5-9d36-4051-8763-5a913fdb5083)
 
 ν = c/λ
-<ul>ν = 433MHz
-<li>λ=c/ν</li>
-<li>λ=</li>
+<ul>
+  ν = 433MHz
+  <li>λ=c/ν</li>
+  <li>λ=0.692m</li>
 </ul>
-# Atmospheric Attoination
-![636541236646532654-Loss_V_Freq_Air](https://github.com/DonaldB2003/SI-2024-CubeSat-SU/assets/173866002/e62cac79-4d0f-42bd-acc6-e277a31597a6)
+
+
+VHF (Very High Frequency): Refers to radio frequencies ranging from 30 MHz to 300 MHz. VHF frequencies are commonly used for FM radio broadcasting, television broadcasting (channels 2-13), maritime communication, air traffic control, and some military and government communication.
+
+UHF (Ultra High Frequency): Refers to radio frequencies ranging from 300 MHz to 3 GHz. UHF frequencies are used for a variety of purposes including television broadcasting (channels 14-83 and above), satellite communication, cell phones, Wi-Fi, Bluetooth, and many two-way radios (walkie-talkies).
+
+
+# Atmospheric attenuation
+
+"Atmospheric attenuation refers to the reduction in electromagnetic radiation intensity as it travels through Earth's atmosphere. This occurs due to absorption, scattering (like Rayleigh and Mie scattering), and reflection by gases, aerosols, and water vapor. It affects various applications such as satellite communication, weather forecasting, and remote sensing, influencing the choice of frequencies used in these technologies."
+
+
+![636541236646532654-Loss_V_Freq_Air](https://github.com/DonaldB2003/SI-2024-CubeSat-SU/assets/173866002/ddede805-3562-4e5e-a2e1-19576789e9cf)
+
+
 
 ## Carrier Frequency Selection Criteria
 <ul>
@@ -105,8 +138,23 @@ UHF
 ## veleocity from the centre of earth
 ## Path Loss(dB)
 
+# 4 Types of Orbit
 
+There are several types of orbits that objects can follow around celestial bodies such as planets or stars.
 
+![image](https://github.com/DonaldB2003/SI-2024-CubeSat-SU/assets/173866002/58fa41f0-29e9-4ad9-97f9-1c96d9a23d9c)
+
+Here are four common types of orbits:
+
+Low Earth Orbit (LEO): Orbits at altitudes typically between 160 kilometers (100 miles) and 2,000 kilometers (1,200 miles) above the Earth's surface. LEO is used by many satellites for Earth observation, communication, and scientific research.
+
+Geostationary Orbit (GEO): Orbits at an altitude of approximately 35,786 kilometers (22,236 miles) above the equator. Satellites in GEO orbits remain fixed relative to a point on Earth's surface, making them ideal for communication and weather satellites.
+
+Polar Orbit: Passes over Earth's poles, allowing satellites to observe the entire surface of the Earth over time as the planet rotates beneath the orbit. Polar orbits are used for Earth observation, mapping, and scientific research.
+
+Heliocentric Orbit: Orbits around the Sun rather than a planet. Planets, comets, and asteroids follow heliocentric orbits within our solar system. Spacecraft such as those sent to explore other planets or to study the Sun also follow heliocentric orbits.
+
+These different orbits serve various purposes depending on the mission objectives, including communication, Earth observation, scientific exploration, and more
 
 
 
