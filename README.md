@@ -41,7 +41,16 @@ A CubeSat dispenser system is a critical component used to deploy CubeSats into 
 
 ## Layers of CubeSat
 ![Screenshot 2024-07-11 160347](https://github.com/DonaldB2003/SI-2024-CubeSat-SU/assets/173866002/d08f1305-1be7-4f56-8325-a75a60d7d034)
+<ul>Chassis
+  <li>layer 1-Antenna</li>
+  <li>layer 2-communication radio</li>
+  <li>layer 3-On Board Computer</li>
+  <li>layer 4-Attitude control rods</li>
+  <li>layer 5-power management system</li>
+  <li>layer 6-magnet and battery</li>
+</ul>
 
+## 
 
 
 
