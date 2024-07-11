@@ -50,18 +50,58 @@ A CubeSat dispenser system is a critical component used to deploy CubeSats into 
   <li>layer 6-magnet and battery</li>
 </ul>
 
-## 
+## Block Diagram For communication
 
 
+## SPI Protocol
 
 
+### PID
+
+# MICRO PROCESSOR
+![image](https://github.com/DonaldB2003/SI-2024-CubeSat-SU/assets/173866002/c30d280f-926a-4fe3-9fc5-a3395cf9067a)
+
+# MICRO CONTROLER
+![image](https://github.com/DonaldB2003/SI-2024-CubeSat-SU/assets/173866002/1f1990d8-c247-4f3a-b7c9-80c1f6f6b671)
+<ul>
+  <li>MICROCONTROLLER = MICROPROCESSOR+PERIPHERAL</li>
+PMW = Pulse ...........
+</ul>
+ESP-32
 
 
+# WAVE GENERATION
+|x|e^-x|1-e^-x|
+|-|----|------|
+|0.001|0.99|9.95x10^-3|
+|0.1|0.90|0.095|
+|1|0.36|0.63|
+|10|4.53x10^-5|0.99|
+|100|3.72x10^-44|1|
 
+# Electromagnetic Spectrum
 
+VHF
+UHF
 
+ν = c/λ
+<ul>ν = 433MHz
+<li>λ=c/ν</li>
+<li>λ=</li>
+</ul>
+# Atmospheric Attoination
+## Carrier Frequency Selection Criteria
+<ul>
+  <li>Power Efficiency</li>
+  <li>Bandwidth Efficiency</li>
+  <li>System Complexity</li>
+  <li>Frequency Allocation & Radiation</li>
+</ul>
 
-
+# SATELLITE FUNDAMENTALS 
+## Satellite Orbit Kepeler`s Law
+## veleocity from the centre of earth
+## Path Loss(dB)
 
 
 
