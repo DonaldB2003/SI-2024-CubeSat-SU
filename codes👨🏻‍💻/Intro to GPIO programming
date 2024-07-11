@@ -1,0 +1,29 @@
+```c
+#define LED1 2
+#define LED2 4
+#define LED3 5
+#define LED4 18
+#define LED5 19
+
+// Array to hold LED pin numbers
+int leds[] = {LED2, LED3, LED4, LED5};
+
+// Corresponding delays for each LED
+int delays[] = {1000, 2000, 100, 500};
+
+void setup() {
+  pinMode(LED1, OUTPUT); // LED1 is not used in loop, so just initialized here
+  for (int i = 0; i < sizeof(leds) / sizeof(leds[0]); i++) {
+    pinMode(leds[i], OUTPUT);
+  }
+}
+
+void loop() {
+  for (int i = 0; i < sizeof(leds) / sizeof(leds[0]); i++) {
+    digitalWrite(leds[i], HIGH);
+    delay(delays[i]);
+    digitalWrite(leds[i], LOW);
+    delay(50); // Common delay after each LED blinks
+  }
+}
+```
