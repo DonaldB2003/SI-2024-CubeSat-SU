@@ -1,0 +1,31 @@
+```c
+#define ledcSetup
+#define ledcAttachPin
+
+const int PWM_CHANNEL=0;
+const int PWM_FREQ=500;               //RECALL AURDINO UNO IS ~490 Hz
+const int PWM_RESOLUTION=8;          //SAME RESOLUTION AS UNO 8 BITS,0-255
+
+const int MAX_DUTY_CYCLE=(int)(pow(2,PWM_RESOLUTION)-1);
+
+const int LED_OUTPUT_PIN = 13;
+
+const int DELAY_MS=4;                 //DELAY BETWEEN FADE INCREMENT
+
+void setup(){
+  ledcSetup(PWM_CHANNEL,PWM_FREQ,PWM_RESOLUTION);
+
+   ledcAttachPin(LED_OUTPUT_PIN,PWM_CHANNEL);
+}
+
+void loop(){
+  for(int dutyCycle=0 ; dutyCycle <= MAX_DUTY_CYCLE; dutyCycle++){
+    ledcWrite(PWM_CHANNEL,dutyCycle);
+    delay(DELAY_MS);
+}
+  for(int dutyCycle =MAX_DUTY_CYCLE ; dutyCycle>=0 ; dutyCycle--){
+    ledcWrite(PWM_CHANNEL,dutyCycle);
+    delay(DELAY_MS);
+}
+}
+```
