@@ -1,4 +1,5 @@
 # 🛰️SI-2024-CubeSat-SU
+
 🗄️ Repository for summer internship 2024 "intro to CubeSat and Satellite Communication"
 
 ![cube-1024x661](https://github.com/DonaldB2003/SI-2024-CubeSat-SU/assets/173866002/1522ad85-2467-4c02-b384-0174fc47d0be)
@@ -111,9 +112,11 @@ The electromagnetic spectrum refers to the entire range of wavelengths or freque
 </ul>
 
 
-VHF (Very High Frequency): Refers to radio frequencies ranging from 30 MHz to 300 MHz. VHF frequencies are commonly used for FM radio broadcasting, television broadcasting (channels 2-13), maritime communication, air traffic control, and some military and government communication.
+### VHF (Very High Frequency):
+Refers to radio frequencies ranging from 30 MHz to 300 MHz. VHF frequencies are commonly used for FM radio broadcasting, television broadcasting (channels 2-13), maritime communication, air traffic control, and some military and government communication.
 
-UHF (Ultra High Frequency): Refers to radio frequencies ranging from 300 MHz to 3 GHz. UHF frequencies are used for a variety of purposes including television broadcasting (channels 14-83 and above), satellite communication, cell phones, Wi-Fi, Bluetooth, and many two-way radios (walkie-talkies).
+### UHF (Ultra High Frequency):
+Refers to radio frequencies ranging from 300 MHz to 3 GHz. UHF frequencies are used for a variety of purposes including television broadcasting (channels 14-83 and above), satellite communication, cell phones, Wi-Fi, Bluetooth, and many two-way radios (walkie-talkies).
 
 
 # Atmospheric attenuation
@@ -146,16 +149,19 @@ There are several types of orbits that objects can follow around celestial bodie
 
 Here are four common types of orbits:
 
-Low Earth Orbit (LEO): Orbits at altitudes typically between 160 kilometers (100 miles) and 2,000 kilometers (1,200 miles) above the Earth's surface. LEO is used by many satellites for Earth observation, communication, and scientific research.
+## Low Earth Orbit (LEO):
+Orbits at altitudes typically between 160 kilometers (100 miles) and 2,000 kilometers (1,200 miles) above the Earth's surface. LEO is used by many satellites for Earth observation, communication, and scientific research.
 
-Geostationary Orbit (GEO): Orbits at an altitude of approximately 35,786 kilometers (22,236 miles) above the equator. Satellites in GEO orbits remain fixed relative to a point on Earth's surface, making them ideal for communication and weather satellites.
+## Geostationary Orbit (GEO):
+Orbits at an altitude of approximately 35,786 kilometers (22,236 miles) above the equator. Satellites in GEO orbits remain fixed relative to a point on Earth's surface, making them ideal for communication and weather satellites.
 
-Polar Orbit: Passes over Earth's poles, allowing satellites to observe the entire surface of the Earth over time as the planet rotates beneath the orbit. Polar orbits are used for Earth observation, mapping, and scientific research.
+## Polar Orbit:
+Passes over Earth's poles, allowing satellites to observe the entire surface of the Earth over time as the planet rotates beneath the orbit. Polar orbits are used for Earth observation, mapping, and scientific research.
 
-Heliocentric Orbit: Orbits around the Sun rather than a planet. Planets, comets, and asteroids follow heliocentric orbits within our solar system. Spacecraft such as those sent to explore other planets or to study the Sun also follow heliocentric orbits.
+## Heliocentric Orbit:
+Orbits around the Sun rather than a planet. Planets, comets, and asteroids follow heliocentric orbits within our solar system. Spacecraft such as those sent to explore other planets or to study the Sun also follow heliocentric orbits.
 
-These different orbits serve various purposes depending on the mission objectives, including communication, Earth observation, scientific exploration, and more
-
+"These different orbits serve various purposes depending on the mission objectives, including communication, Earth observation, scientific exploration, and more"
 
 
 
