@@ -1,15 +1,13 @@
 # 🛰️SI-2024-CubeSat-SU
+🗄️ Repository for summer internship 2024 "intro to CubeSat and Satellite Communication"
 
 ![cube-1024x661](https://github.com/DonaldB2003/SI-2024-CubeSat-SU/assets/173866002/1522ad85-2467-4c02-b384-0174fc47d0be)
 
-🗄️ Repository for summer internship 2024 "intro to CubeSat and Satellite Communication"
-
-# Abstractℹ️
+# Abstractℹ
 The report encapsulates the comprehensive learning journey of the Summer Internship 2024 on Introduction to CubeSat and Satellite Communication, providing a deep dive into CubeSat fundamentals, satellite communication principles, LoRa protocol applications, and antenna design. Participants engaged in hands-on experiences including programming ESP32 platforms, configuring TinyGS ground stations, and simulating antenna designs using 4NEC2 software. Led by expert instructors from Silicon University and the Indian Institute of Space Science and Technology, alongside industry guidance from ToSpace, the internship fostered a practical understanding of aerospace technologies. Culminating in a project to design and implement ground stations, participants showcased their skills in a poster presentation, reinforcing their readiness for future endeavors in satellite engineering and space technology.
 
 # Introduction
 
-ChatGPT
 The course on Introduction to CubeSat and Satellite Communication offers a structured learning path covering fundamental aspects of embedded systems, communication systems, LoRa technology, antenna design, and the deployment of a TinyGS ground station. Participants begin by mastering ESP32 embedded systems through practical exercises in the Arduino IDE, learning GPIO programming, PWM control for LED dimming, and interfacing with sensors. They then delve into the basics of communication systems, understanding modulation techniques, digital communication principles, and the electromagnetic spectrum.
 
 Next, the course focuses on LoRa basics, exploring spread-spectrum modulation, LoRa radio architecture, and practical implementation using ESP32 with the RA-02 LoRa module. Participants engage in hands-on labs to establish communication between two ESP32 boards equipped with LoRa modules, measuring signal strength and quality using RSSI and SNR metrics.
@@ -18,7 +16,36 @@ Antenna fundamentals follow, where participants learn about radiation mechanisms
 
 The culmination of the course involves the deployment of a TinyGS ground station. Participants apply their acquired knowledge to set up and configure ground stations using ESP32 platforms, establishing bidirectional communication with CubeSats or other satellites. Through collaborative project work, they demonstrate proficiency in satellite communication systems, antenna deployment, and operational management of ground stations, preparing them for real-world applications in the burgeoning field of CubeSats and satellite communication technologies.
 
-# CubeSat Basics
+# CubeSat
+<ul>
+  <li>http</li>
+  <li>jjj</li>
+</ul>
+A CubeSat is a miniaturized satellite with a standardized size and structure, often used for scientific research and educational missions in space.
+<ul>
+  <li>typically measured in cubic units of 10x10x10 centimeters. </li>
+  <li>allows for cost-effective development and deployment </li>
+  <li>Cost-Effective </li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Lab Exercises
 
