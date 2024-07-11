@@ -90,7 +90,7 @@ UHF
 <li>λ=</li>
 </ul>
 # Atmospheric Attoination
-![atomspheric-absorption_636385398576768972](https://github.com/DonaldB2003/SI-2024-CubeSat-SU/assets/173866002/d3a168ce-0079-451e-aa8e-782b5dc1577d)
+![636541236646532654-Loss_V_Freq_Air](https://github.com/DonaldB2003/SI-2024-CubeSat-SU/assets/173866002/e62cac79-4d0f-42bd-acc6-e277a31597a6)
 
 ## Carrier Frequency Selection Criteria
 <ul>
