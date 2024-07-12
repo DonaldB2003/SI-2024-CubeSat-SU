@@ -282,6 +282,8 @@ void loop() {
 }
 ```
 
+
+
 ## Lab 2: Intro to GPIO programming
 
 In this Lab exercise, students learn to configure a GPIO as an output and control an LED with it.
@@ -348,6 +350,9 @@ void loop() {
 
 
 
+
+
+
 ## Lab 4: Dimming multiple LEDs
 
 ESP32 GPIO pins were used to dim multiiple LEDs with different delays.
@@ -398,6 +403,9 @@ void loop() {
 ## Lab 5: Printing data in the serial monitor
 -**Serial Monitor** is an essential tool when creating projects with Arduino. It can be used as a debugging tool, testing concepts, or communicating directly with the Arduino board.
 -The **Arduino IDE 2** has the Serial Monitor tool integrated with the editor, which means that no external window is opened when using the Serial Monitor. This means that you can have multiple windows open, each with its own Serial Monitor.
+
+
+
 
 
 
@@ -470,6 +478,9 @@ delay(2000);
 void loop(){}
 ```
 
+
+
+
 ## Lab 8: Introduction Signal Processing using Python
 You can use lab1-fft.py and lab2-fsk.py as reference for the following exercises:
 Write a python program to create a cosine wave of frequency 2MHz with 256 samples per cycle.
@@ -482,6 +493,186 @@ Change the code such that the modulation frequency for 1 is 4MHz and for 0 it is
 Change the above code to simulate ASK modulation.
 Add demodulation to the above code and plot the time-domain waveform, as well as the FFT of the demodulated signal.
 Add a moving average filter to remove the high-frequency component from the demodulated signal.
+
+### sine wave
+
+![lab-fsk](https://github.com/user-attachments/assets/58df6f40-b9b0-467f-bd31-57e3e06bcbbb)
+
+![fftsin](https://github.com/user-attachments/assets/b73f870f-4485-4439-9b65-15f2b836a168)
+
+```py
+  import numpy as np
+import matplotlib.pyplot as plt
+
+# Parameters
+f_signal = 2e6  # 2 MHz signal frequency
+fs = 0.5e9     # Sampling frequency (0.5 GHz)
+num_samples = 256  # Number of samples
+total_time = 500e-9  # Total time duration (500 ns)
+time_period = 0.5e-6  # Time period of the signal (0.5 microseconds)
+
+# Time vector
+t = np.linspace(0, total_time, num_samples, endpoint=False)
+
+# Generate sine wave
+signal = np.sin(2 * np.pi * f_signal * t)
+
+# Plotting
+plt.figure(figsize=(10, 6))
+plt.plot(t * 1e9, signal)  #, marker='o')
+plt.title('2 MHz Sine Wave')
+plt.xlabel('Time (ns)')
+plt.ylabel('Amplitude')
+plt.grid(True)
+plt.show()
+
+plt.tight_layout()
+plt.show()
+plt.savefig("lab-fsk.png")
+```
+
+
+
+### Modulation
+
+
+![demodulation](https://github.com/user-attachments/assets/f42470f5-bce1-44cc-8887-c178199f7a58)
+#!/usr/bin/env python3
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.fft import fft, fftfreq
+## For saving plots to a file. Just couldn't get it to work from commandline
+import matplotlib
+matplotlib.use('Agg')
+
+# Parameters
+fc0 = 4e6        # 1 Carrier Frequency
+fc1 = 2e6        # 0 Carrier Frequency
+fs = 256*4e6    # Sampling frequency
+ncycl = 512          # No of cycles of fc 
+nfc0 = 8        # number of fc0 cycles for one symbol
+Tsim = ncycl/fc0       # Total Simulation time
+t = np.arange(0, Tsim, 1/fs)  # Time vector
+
+# Message signal (binary data)
+data = np.random.randint(0, 2, int(ncycl/nfc0))  # Random binary data
+nupData = int(t.size/data.size) 
+data = np.repeat(data, nupData)  # Upsample binary data
+
+# FSK Modulation
+modulated_signal = np.zeros_like(t)
+for i in range(len(t)):
+    if data[i] == 0:
+        modulated_signal[i] = np.cos(2 * np.pi * fc0 * t[i])
+    else:
+        modulated_signal[i] = np.cos(2 * np.pi * fc1 * t[i])
+
+# FFT of the modulated signal
+N = len(modulated_signal)
+yf = fft(modulated_signal)
+xf = fftfreq(N, 1 / fs)
+
+# Demodulation
+# Parameters for demodulation
+threshold = 0  # Decision threshold for demodulation
+
+# Demodulated data array
+demodulated_data = np.zeros_like(data)
+
+# Demodulation loop
+for i in range(len(t)):
+    if np.cos(2 * np.pi * fc0 * t[i]) > threshold:
+        demodulated_data[i] = 0
+    else:
+        demodulated_data[i] = 1
+
+# Ensure demodulated data has the correct length (may be longer due to upsampling)
+demodulated_data = demodulated_data[:data.size]
+
+# Plotting
+fig, axs = plt.subplots(4, 1, figsize=(10, 16))
+
+axs[0].plot(t, data)
+axs[0].set_title('Original Binary Data')
+axs[0].set_xlim([0, Tsim])
+axs[0].set_ylim([-0.2, 1.2])
+
+axs[1].plot(t, modulated_signal)
+axs[1].set_title('FSK Modulated Signal')
+axs[1].set_xlim([0, Tsim])
+
+axs[2].plot(xf, np.abs(yf))
+axs[2].set_title('FFT of Modulated Signal')
+axs[2].set_xlim([0, 2*fc0])
+axs[2].set_xlabel('Frequency (Hz)')
+
+axs[3].plot(t, demodulated_data, marker='o', linestyle='-', color='b')
+axs[3].set_title('Demodulated Binary Data')
+axs[3].set_xlabel('Time (s)')
+axs[3].set_ylabel('Binary Value')
+axs[3].set_xlim([0, Tsim])
+axs[3].set_ylim([-0.2, 1.2])
+axs[3].grid(True)
+
+plt.tight_layout()
+plt.savefig("fsk-lab2.png")
+
+### Demodulation
+<ul>
+# Parameters
+fc0 = 4e6        # 1 Carrier Frequency
+fc1 = 2e6        # 0 Carrier Frequency
+fs = 256*4e6    # Sampling frequency
+ncycl = 512          # No of cycles of fc
+nfc0 = 8        # number of fc0 cycles for one symbol
+Tsim = ncycl/fc0       # Total Simulation time
+t = np.arange(0, Tsim, 1/fs)  # Time vector
+
+# Message signal (binary data)
+data = np.random.randint(0, 2, int(ncycl/nfc0))  # Random binary data
+nupData = int(t.size/data.size)
+data = np.repeat(data, nupData)  # Upsample binary data
+
+print(data.size, t.size)
+
+# FSK Modulation
+modulated_signal = np.zeros_like(t)
+for i in range(len(t)):
+    if data[i] == 0:
+        modulated_signal[i] = np.cos(2 * np.pi * fc0 * t[i])*np.cos(2 * np.pi * fc0 * t[i])
+    else:
+        modulated_signal[i] = np.cos(2 * np.pi * fc1 * t[i])*np.cos(2 * np.pi * fc0 * t[i])
+
+# FFT of the modulated signal
+N = len(modulated_signal)
+yf = fft(modulated_signal)
+xf = fftfreq(N, 1 / fs)
+
+# Plotting
+fig, axs = plt.subplots(3, 1, figsize=(10, 12))
+
+axs[0].plot(t, data)
+axs[0].set_title('Original Binary Data')
+axs[0].set_xlim([0, Tsim])
+#axs[0].set_ylim([-0.2, 1.2])
+
+axs[1].plot(t, modulated_signal)
+axs[1].set_title('FSK DeModulation')
+axs[1].set_xlim([0, Tsim])
+axs[2].plot(xf, np.abs(yf))
+axs[2].set_title('FFT of DeModulated Signal')
+axs[2].set_xlim([0, 2*fc0])
+axs[2].set_xlabel('Frequency (Hz)')
+
+plt.tight_layout()
+plt.savefig("fsk-demodulation-lab2.png")
+plt.show()
+</ul>
+
+![fsk-demodulation-lab2](https://github.com/user-attachments/assets/7835a516-0691-4310-8959-ea1308133588)
+
+
 
 
 ## Lab 9: I2C temperature sensor interface
@@ -556,6 +747,10 @@ display.display();
 }
 ```
 
+
+
+
+
 ## Lab 10: Introduction to LoRa module
 
 Introduction to architecture and pin configuration of Ra-02 Lora transceiver module and SPI (Serial Peripheral Interface) communication.
@@ -586,8 +781,15 @@ Interface: SPI
 Commonly used with Arduino and ESP32.
 
 
+
+
+
+
 ## Lab 11: LoRa communication
 Introduction to Lora communication using Ra-02 Lora transceiver module with ESP32.
+
+
+
 
 
 
@@ -860,6 +1062,11 @@ void loop() {
   }
 ```
 
+
+
+
+
+
 ## Lab 14: Introduction to antenna modeling and simulation software 4NEC2.
 
 **4NEC2** is a popular antenna modeling and simulation tool based on the Numerical Electromagnetics Code (NEC). It allows users to design, analyze, and optimize antennas by simulating their performance in various configurations.
@@ -872,6 +1079,10 @@ void loop() {
   **Visual Representation:** Provides graphical visualization of antenna geometry and radiation patterns.
 
   **Post-Processing:** Allows for in-depth analysis of results, including gain, radiation patterns, and impedance.
+
+
+
+
 
 
 ## Lab 15: Physical design of Dipole and V-dipole antennas
@@ -916,6 +1127,10 @@ FR 0 1 0 0 433 0			' Set design frequency (433 Mc).
 EN					' End of NEC input
 
 
+
+
+
+
 ## Lab 16: Introduction to TinyGS
 
 ![images](https://github.com/user-attachments/assets/20129486-6c79-44f9-bf88-08e56c100df8)
@@ -939,6 +1154,10 @@ https://tinygs.com/
    
 
 
+
+
+
+
 ## Lab 17: Setting up a TinyGS ground station
 
 ![38e6e159-a341-4461-8edb-87557fabbab5](https://github.com/user-attachments/assets/0d9f3674-97c7-43f7-ab3b-f135bef59055)
@@ -960,6 +1179,10 @@ https://tinygs.com/
 
 ### Packet recieved from the Satellite
 ![image](https://github.com/user-attachments/assets/2d1c9958-ffb2-458d-80e9-63edfa376866)
+
+
+
+
 
 
 
@@ -1057,6 +1280,10 @@ https://www.google.com/maps/place/25%C2%B024'17.5%22N+30%C2%B015'50.8%22W/@25.40
 
 
 And modify the above program such the TLE data file can be given as input with the two line numbers to process.
+
+
+
+
 
 
 
