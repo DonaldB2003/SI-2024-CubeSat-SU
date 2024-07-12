@@ -726,6 +726,133 @@ void loop() {
 ## Lab 13: LoRa one-to-many communication setup
 
 Sending data packets from one Lora transmitter to multiple Lora receivers and retracing the same packets.
+### Programming for transmission
+
+```c
+#include<SPI.h>
+#include<LoRa.h>
+
+//std configuration
+//#define DIO0 2
+//#define RST 14
+//#define NSS 3
+//#define MOSI 23
+//#define MISO 19
+//#define SCLK 18
+
+#define DIO0 26
+#define RST 14
+#define NSS 18
+#define MOSI 27
+#define MISO 19
+#define SCLK 5
+
+int counter=0;
+
+void setup(){
+  //initiliazing serial monitor
+  Serial.begin(115200);
+  while(!Serial);
+  Serial.println("LoRa Sender");
+
+  //setup LoRa tranceiver module
+  SPI.begin(SCLK,MISO,MOSI,NSS);
+  LoRa.setPins(NSS,RST,DIO0);
+
+  //replace the lora.begin(---E-)
+  // 433E6 FOR ASIA
+  // 866E6 FOR EUROPE
+  // 915E6 FOR NORTH AMERICA
+while(!LoRa.begin(433E6)){
+  Serial.println(".");
+  delay(500);
+}
+//change sync word 0xF3 to match reciever
+//the sync word assures you dont gets LoRa message from other LoRa transceiver
+//ranges from 0-0xFF
+LoRa.setSyncWord(0XF3);
+Serial.println("LoRa Initializing OK !");
+}
+
+void loop(){
+  Serial.println("sending packet");
+  Serial.println(counter);
+
+  //send LoRa packet to recieve
+
+  LoRa.beginPacket();
+  LoRa.print("hello...");
+  LoRa.print(counter);
+  LoRa.endPacket();
+
+  counter++;
+
+  delay(1000);
+}
+
+```
+### Programming for reciever
+```c
+#include<SPI.h>
+#include<LoRa.h>
+
+//std configuration
+//#define DIO0 2
+//#define RST 14
+//#define NSS 3
+//#define MOSI 23
+//#define MISO 19
+//#define SCLK 18
+
+#define DIO0 26
+#define RST 14
+#define NSS 18
+#define MOSI 27
+#define MISO 19
+#define SCLK 5
+
+
+void setup(){
+  //initiliazing serial monitor
+  Serial.begin(115200);
+  while(!Serial);
+  Serial.println("LoRa Sender");
+
+  //setup LoRa tranceiver module
+  SPI.begin(SCLK,MISO,MOSI,NSS);
+  LoRa.setPins(NSS,RST,DIO0);
+
+  //replace the lora.begin(---E-)
+  // 433E6 FOR ASIA
+  // 866E6 FOR EUROPE
+  // 915E6 FOR NORTH AMERICA
+while(!LoRa.begin(433E6)){
+  Serial.println(".");
+  delay(5000);
+}
+//change sync word 0xF3 to match reciever
+//the sync word assures you dont gets LoRa message from other LoRa transceiver
+//ranges from 0-0xFF
+LoRa.setSyncWord(0XF3);
+Serial.println("LoRa Initializing OK !");
+}
+
+void loop() {
+  // try to parse packet
+  int packetsize = LoRa.parsePacket();
+  if(packetsize){
+    Serial.println("Recieving Packet:");
+  }
+  while(LoRa.available()){
+    String LoRaData = LoRa.readString();
+    Serial.print(LoRaData);
+  }
+    Serial.print("`with RSSI");
+    // RSSI - recieved signal strength indicator
+    Serial.print(LoRa.packetRssi());
+    Serial.println("C");
+  }
+```
 
 ## Lab 14: Introduction to antenna modeling and simulation software 4NEC2.
 
@@ -774,6 +901,7 @@ EN					' End of NEC input
 ## Lab 16: Introduction to TinyGS
 
 ![images](https://github.com/user-attachments/assets/20129486-6c79-44f9-bf88-08e56c100df8)
+
 https://tinygs.com/
 
 **TinyGS** is a lightweight, open-source ground station software designed for receiving LoRaWAN and other types of satellite signals. It allows users to connect easily and manage their own ground station for satellite communication.
@@ -781,15 +909,40 @@ https://tinygs.com/
 ![image](https://github.com/user-attachments/assets/382cf837-3f2b-450d-bc98-c34d0015dd49)
 
 
-**Key Features**
+### Key Features
 
-Lightweight: Optimized for performance on small hardware platforms.
-Open Source: Community-driven, enabling contributions and modifications.
-Flexible Configuration: Easily configure to work with different satellites and protocols.
-Real-time Monitoring: Provides live data reception and monitoring capabilities.
+   **Lightweight:** Optimized for performance on small hardware platforms.
+   
+   **Open Source:** Community-driven, enabling contributions and modifications.
+   
+   **Flexible Configuration:** Easily configure to work with different satellites and protocols.
+   
+   **Real-time Monitoring:** Provides live data reception and monitoring capabilities.
+   
 
 
 ## Lab 17: Setting up a TinyGS ground station
+
+![38e6e159-a341-4461-8edb-87557fabbab5](https://github.com/user-attachments/assets/0d9f3674-97c7-43f7-ab3b-f135bef59055)
+
+1.**Hardware Requirements**
+  1. **LoRa Module:** Common options include Ra-02.
+  2. **Microcontroller:** Arduino, Raspberry Pi, or ESP32.
+  3. **Antenna:** Compatible antenna for your LoRa module.
+  4. **Power Supply:** Ensure stable power for your setup.
+
+
+2.**Steps**
+  1. Construct design of antenna using **4NEC2**
+  2. Resister yourself in Tiny GS website
+  3. Install algorithm from TinyGS website in **ESP-32**
+  4. Tune it with the help of **VNA** and cutting plier
+  5. setup your Ground Station
+  6. wait till you recieve a data
+
+### Packet recieved from the Satellite
+![image](https://github.com/user-attachments/assets/2d1c9958-ffb2-458d-80e9-63edfa376866)
+
 
 
 
@@ -872,11 +1025,11 @@ if _name_ == "_main_":
 ```
 
 
-**Enter TLE data:TIANQI-23**
+**Enter TLE data: TIANQI-23**
 
-Enter line 1: 1 57794U 23135C   24193.84851663  .00000031  00000-0  84750-4 0  9998
+    Enter line 1: 1 57794U 23135C   24193.84851663  .00000031  00000-0  84750-4 0  9998
 
-Enter line 2: 2 57794  49.9717 238.8296 0014532 317.7298  42.2493 14.22337202 44201
+    Enter line 2: 2 57794  49.9717 238.8296 0014532 317.7298  42.2493 14.22337202 44201
 
 **Generate the output as an URL that you can paste in a browser and get the satellite location.**
 
