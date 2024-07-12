@@ -165,6 +165,8 @@ Orbits around the Sun rather than a planet. Planets, comets, and asteroids follo
 
 # Antenna
 
+Antennas are devices used to transmit and receive electromagnetic waves, typically in the radio frequency (RF) range. They come in various types, each designed for specific applications based on factors like frequency range, directivity, and physical size
+
 ## Radiation
 
 Radiation refers to energy that travels through space in the form of waves or particles. It can be categorized into ionizing radiation (such as X-rays and gamma rays) and non-ionizing radiation (like radio waves and visible light). Ionizing radiation has enough energy to remove tightly bound electrons from atoms, potentially causing damage to living tissues and DNA. Understanding and managing exposure to radiation is crucial in fields such as medicine, energy production, and space exploration.
@@ -181,7 +183,63 @@ There is radiation if the wire is curved, bent, discontinuous, terminated, or tr
 
 If charge is oscillating in a time-motion, it radiates. even if the wira is straight.
 
+## Two Wire Antenna and free space
 
+![image](https://github.com/user-attachments/assets/4366861b-fa24-4596-b5c8-79e2557cdaeb)
+
+## Formafion and detachment of free-wave from a Dipole Antenna
+
+![image](https://github.com/user-attachments/assets/36a99b98-e329-47f6-bd60-9b5503755a80)
+
+
+## Types Of Antennas
+
+![image](https://github.com/user-attachments/assets/2798a1b2-59e9-4f47-bf57-f1f60b7c95eb)
+
+### Dipole Antenna:
+
+Consists of two conductive elements (rods or wires) oriented in a straight line.
+Simple and widely used for radio and television broadcasting, as well as in Wi-Fi routers.
+
+### Yagi-Uda Antenna:
+
+Consists of multiple parallel elements (one driven element, one or more reflectors, and one or more directors).
+Directional antenna used for long-distance communication, such as TV reception and amateur radio.
+
+### Horn Antenna:
+
+Shaped like a pyramidal or conical horn.
+Used for microwave frequencies, radar systems, and satellite communication due to its wide bandwidth and high gain.
+
+### Parabolic Reflector Antenna:
+
+Consists of a large dish-shaped reflector and a small feed antenna at the focal point.
+Provides high gain and is used for satellite communication, radio telescopes, and radar.
+
+### Patch Antenna:
+
+Flat, rectangular antenna made on a printed circuit board.
+Commonly used in mobile devices (like cell phones) and Wi-Fi routers due to their compact size and ease of integration.
+
+### Loop Antenna:
+
+Consists of a loop of wire or conductor.
+Used for receiving signals in AM radios and magnetic field sensing applications.
+
+### Log-Periodic Antenna:
+
+Consists of multiple dipole elements of varying lengths.
+Provides a wide bandwidth and is used in broadband communication systems and television antennas.
+
+### Helical Antenna:
+
+Consists of a helix-shaped wire or conductor wound in a coil.
+Used in satellite communication, GPS, and amateur radio due to its circular polarization and compact size.
+
+### Microstrip Antenna:
+
+Made from a thin metal patch on a dielectric substrate.
+Used in mobile phones, GPS devices, and wireless communication systems due to their low profile and ease of integration.
 
 
 
