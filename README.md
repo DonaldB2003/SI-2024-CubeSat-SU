@@ -194,7 +194,7 @@ If charge is oscillating in a time-motion, it radiates. even if the wira is stra
 
 ## Types Of Antennas
 
-![image](https://github.com/user-attachments/assets/2798a1b2-59e9-4f47-bf57-f1f60b7c95eb)
+![OIP](https://github.com/user-attachments/assets/e2704399-78f4-4756-a47c-f152ce06c322)
 
 ### Dipole Antenna:
 
@@ -246,10 +246,45 @@ Used in mobile phones, GPS devices, and wireless communication systems due to th
 # Lab Exercises
 
 ## Lab-1 Introduction to ESP32
+<ul>
+  <li>Install and configure Arduino IDE</li>
+  <li>Introduction to ESP32 development kit.</li>
+  <li>Write and execute a C-code to blink an LED on the dev board.</li>
+</ul>
 
 -[Datasheet ESP32](https://github.com/silicon-sat/SI-2024-CubeSat/blob/main/docs/Datasheet-ESP32.pdf)
 
-## Lab-2 Blinking LED
+**ESP-32**
+The ESP32 is a powerful microcontroller with built-in Wi-Fi and Bluetooth capabilities, ideal for IoT projects. It features:
+<ul>
+<li>Dual-core processor: Runs at up to 240 MHz.</li>
+<li>Low power consumption: Great for battery-operated devices.</li>
+<li>Variety of GPIO pins: Supports various interfaces like SPI, I2C, UART, PWM, etc.</li>
+<li>Rich development environment: Compatible with Arduino IDE, PlatformIO, and ESP-IDF.</li>
+
+![347949728-5ec3834a-2b5e-4f80-9f7a-1f6c9c4a9648](https://github.com/user-attachments/assets/ed259ecf-81e2-40d7-897c-a7137e76329a)
+</ul>
+
+
+```C
+#define LED_BUILTIN 4
+void setup() {
+  // initialize digital pin LED_BUILTIN as an output.
+  pinMode(LED_BUILTIN, OUTPUT);
+}
+
+// the loop function runs over and over again forever
+void loop() {
+  digitalWrite(LED_BUILTIN, HIGH);  // turn the LED on (HIGH is the voltage level)
+  delay(1000);                      // wait for a second
+  digitalWrite(LED_BUILTIN, LOW);   // turn the LED off by making the voltage LOW
+  delay(1000);                      // wait for a second
+}
+```
+
+## Lab 2: Intro to GPIO programming
+
+In this Lab exercise, students learn to configure a GPIO as an output and control an LED with it.
 
 -[SOURCE FILE](LED/Aurdino/)
 
