@@ -773,8 +773,13 @@ EN					' End of NEC input
 
 ## Lab 16: Introduction to TinyGS
 
-**TinyGS** is a lightweight, open-source ground station software designed for receiving LoRaWAN and other types of satellite signals. It allows users to connect easily and manage their own ground station for satellite communication.
+![images](https://github.com/user-attachments/assets/20129486-6c79-44f9-bf88-08e56c100df8)
 https://tinygs.com/
+
+**TinyGS** is a lightweight, open-source ground station software designed for receiving LoRaWAN and other types of satellite signals. It allows users to connect easily and manage their own ground station for satellite communication.
+
+![image](https://github.com/user-attachments/assets/382cf837-3f2b-450d-bc98-c34d0015dd49)
+
 
 **Key Features**
 
@@ -785,4 +790,106 @@ Real-time Monitoring: Provides live data reception and monitoring capabilities.
 
 
 ## Lab 17: Setting up a TinyGS ground station
+
+
+
+## Lab 18: Processing TLE data with Python
+
+**Using genAI tool (ChatGPT, CoPilot, etc) find out the detail about the satellite Two-Line Element (TLE) format.**
+
+https://api.tinygs.com/v1/tinygs_supported.txt
+
+**Write a Python programm to conver a TLE of satellite into a Lat/Long location.**
+
+```py
+rom skyfield.api import EarthSatellite, load
+from datetime import datetime
+import time
+import webbrowser
+
+def generate_maps_url(latitude, longitude):
+    return f"https://www.google.com/maps/search/?api=1&query={latitude},{longitude}"
+
+def main():
+    try:
+        # Prompt user to input TLE data
+        print("Enter TLE data:")
+        line1 = input("Enter line 1: ").strip()
+        line2 = input("Enter line 2: ").strip()
+
+        # Extract satellite name from line 1 if available
+        satellite_name = line1.split()[1]
+
+        # Load TLE data into a satellite object
+        satellite = EarthSatellite(line1, line2, name=satellite_name)
+
+        # Load timescale
+        ts = load.timescale()
+
+        while True:
+            # Get current UTC time
+            now = datetime.utcnow()
+
+            # Compute satellite position at the current time
+            t = ts.utc(now.year, now.month, now.day, now.hour, now.minute, now.second + now.microsecond / 1e6)
+            position = satellite.at(t)
+
+            # Get GeographicPosition object
+            geo_position = position.subpoint()
+
+            # Extract latitude, longitude, and altitude in degrees and kilometers
+            latitude = geo_position.latitude.degrees
+            longitude = geo_position.longitude.degrees
+
+            print(f" ")
+            print(f"{satellite_name}")
+            print(f"Latitude, Longitude: {latitude}, {longitude}")
+
+            # Calculate altitude (height above Earth's surface)
+            distance_from_earth_center = position.distance().km
+            radius_of_earth = 6371.0  # Radius of the Earth in kilometers
+            altitude = distance_from_earth_center - radius_of_earth
+
+            print(f"Altitude: {altitude} km")
+
+            # Generate Google Maps URL
+            maps_url = generate_maps_url(latitude, longitude)
+            print(f"Google Maps URL: {maps_url}")
+
+            # Open Google Maps in the default web browser
+            webbrowser.open(maps_url)
+
+            # Delay for a while before fetching the next position
+            time.sleep(10)  # Fetch position every 10 seconds (adjust as needed)
+
+    except KeyboardInterrupt:
+        print("\nTerminated by user.")
+    except Exception as e:
+        print(f"Error occurred: {e}")
+
+if _name_ == "_main_":
+    main()
+```
+
+
+**Enter TLE data:TIANQI-23**
+
+Enter line 1: 1 57794U 23135C   24193.84851663  .00000031  00000-0  84750-4 0  9998
+
+Enter line 2: 2 57794  49.9717 238.8296 0014532 317.7298  42.2493 14.22337202 44201
+
+**Generate the output as an URL that you can paste in a browser and get the satellite location.**
+
+https://www.google.com/maps/place/25%C2%B024'17.5%22N+30%C2%B015'50.8%22W/@25.4048723,-30.2641009,17z/data=!3m1!4b1!4m4!3m3!8m2!3d25.4048723!4d-30.2641009?entry=ttu
+
+![image](https://github.com/user-attachments/assets/ef600973-5b49-40b0-8bfb-035cf8087903)
+
+
+And modify the above program such the TLE data file can be given as input with the two line numbers to process.
+
+
+
+## Lab 19: Simulating Digital Spread Spectrum Modulation
+Resimulate FSK from Lab 8
+Introduce code to convert the digital data into spread spectrum before modulating it to a higher frequency.
 
