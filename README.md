@@ -163,6 +163,25 @@ Orbits around the Sun rather than a planet. Planets, comets, and asteroids follo
 
 "These different orbits serve various purposes depending on the mission objectives, including communication, Earth observation, scientific exploration, and more"
 
+# Antenna
+
+## Radiation
+
+Radiation refers to energy that travels through space in the form of waves or particles. It can be categorized into ionizing radiation (such as X-rays and gamma rays) and non-ionizing radiation (like radio waves and visible light). Ionizing radiation has enough energy to remove tightly bound electrons from atoms, potentially causing damage to living tissues and DNA. Understanding and managing exposure to radiation is crucial in fields such as medicine, energy production, and space exploration.
+
+## Mechanism Of Radiation
+
+If a charge is not moving, current is not created and there is no radiation.
+
+If charge is moving with a uniform velocity:
+
+There is no radiation if the wire is straight, and infinite in extent.
+
+There is radiation if the wire is curved, bent, discontinuous, terminated, or truncated.
+
+If charge is oscillating in a time-motion, it radiates. even if the wira is straight.
+
+
 
 
 
