@@ -4,7 +4,7 @@
 
 ![cube-1024x661](https://github.com/DonaldB2003/SI-2024-CubeSat-SU/assets/173866002/1522ad85-2467-4c02-b384-0174fc47d0be)
 
-# Abstractℹ
+# ℹAbstract
 The report encapsulates the comprehensive learning journey of the Summer Internship 2024 on Introduction to CubeSat and Satellite Communication, providing a deep dive into CubeSat fundamentals, satellite communication principles, LoRa protocol applications, and antenna design. Participants engaged in hands-on experiences including programming ESP32 platforms, configuring TinyGS ground stations, and simulating antenna designs using 4NEC2 software. Led by expert instructors from Silicon University and the Indian Institute of Space Science and Technology, alongside industry guidance from ToSpace, the internship fostered a practical understanding of aerospace technologies. Culminating in a project to design and implement ground stations, participants showcased their skills in a poster presentation, reinforcing their readiness for future endeavors in satellite engineering and space technology.
 
 # Introduction
@@ -589,6 +589,8 @@ Commonly used with Arduino and ESP32.
 ## Lab 11: LoRa communication
 Introduction to Lora communication using Ra-02 Lora transceiver module with ESP32.
 
+
+
 ## Lab 12: Communication between two LoRa nodes
 
 Sending Text packets and receiving the text packets with *RSSI (Received Signal
@@ -726,6 +728,10 @@ void loop() {
 ## Lab 13: LoRa one-to-many communication setup
 
 Sending data packets from one Lora transmitter to multiple Lora receivers and retracing the same packets.
+
+![d2727fe6-5d07-46f3-9c0b-39a2f445ded9](https://github.com/user-attachments/assets/50f08491-6c53-44ea-8836-33d0de2a9624)
+
+
 ### Programming for transmission
 
 ```c
@@ -855,6 +861,18 @@ void loop() {
 ```
 
 ## Lab 14: Introduction to antenna modeling and simulation software 4NEC2.
+
+**4NEC2** is a popular antenna modeling and simulation tool based on the Numerical Electromagnetics Code (NEC). It allows users to design, analyze, and optimize antennas by simulating their performance in various configurations.
+
+### Key Features
+  **Easy to Use:** User-friendly interface suitable for beginners and experienced users alike.
+
+  **Versatile Modeling:** Supports various antenna types, including dipoles, Yagi-Uda, and more complex designs.
+
+  **Visual Representation:** Provides graphical visualization of antenna geometry and radiation patterns.
+
+  **Post-Processing:** Allows for in-depth analysis of results, including gain, radiation patterns, and impedance.
+
 
 ## Lab 15: Physical design of Dipole and V-dipole antennas
 
