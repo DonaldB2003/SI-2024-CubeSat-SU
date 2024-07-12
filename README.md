@@ -267,7 +267,7 @@ The ESP32 is a powerful microcontroller with built-in Wi-Fi and Bluetooth capabi
 
 
 ```C
-#define LED_BUILTIN 4
+#define LED_BUILTIN 2
 void setup() {
   // initialize digital pin LED_BUILTIN as an output.
   pinMode(LED_BUILTIN, OUTPUT);
@@ -286,48 +286,30 @@ void loop() {
 
 In this Lab exercise, students learn to configure a GPIO as an output and control an LED with it.
 
+![esp32-devkit-v1-pinout-imicon-01-copy](https://github.com/user-attachments/assets/5817401d-406e-4832-806f-188978cfb6bd)
+
+
 -[SOURCE FILE](LED/Aurdino/)
 
-Description of writing a list of item:
--To display the current directory type 'pwd'
-  -This is a subsection
-  -Another
- -Start the second list item 
-
 ```C
-#define LED1 2
-#define LED2 4
-#define LED3 5
-#define LED4 18
-#define LED5 19
-
-// Array to hold LED pin numbers
-int leds[] = {LED2, LED3, LED4, LED5};
-
-// Corresponding delays for each LED
-int delays[] = {1000, 700, 100, 500};
-
+#define LED 2
 void setup() {
-  pinMode(LED1, OUTPUT); // LED1 is not used in loop, so just initialized here
-  for (int i = 0; i < sizeof(leds) / sizeof(leds[0]); i++) {
-    pinMode(leds[i], OUTPUT);
-  }
+  // initialize digital pin LED_BUILTIN as an output.
+  pinMode(LED_BUILTIN, OUTPUT);
 }
 
+// the loop function runs over and over again forever
 void loop() {
-  for (int i = 0; i < sizeof(leds) / sizeof(leds[0]); i++) {
-    digitalWrite(leds[i], HIGH);
-    delay(delays[i]);
-    digitalWrite(leds[i], LOW);
-    delay(50); // Common delay after each LED blinks
-  }
+  digitalWrite(LED, HIGH);  // turn the LED on (HIGH is the voltage level)
+  delay(1000);                      // wait for a second
+  digitalWrite(LED, LOW);   // turn the LED off by making the voltage LOW
+  delay(1000);                      // wait for a second
 }
 ```
 
-## Lab -3(Dimming LED)
-
-Parameter for the LED Datashet
-
+## Lab -3(Dimming LED using PWM)
+-In this exercise we used the ESP32 to control the light intensity of an external LED using PWM signal.
+From the [LED Datasheet](https://github.com/silicon-sat/SI-2024-CubeSat/blob/main/docs/Datasheet-LED-XLMR01DE.pdf) tabulate the following data:
 | parameters | value |
 |------------|-------|
 |MAX Forward Current|30mA|
@@ -364,7 +346,98 @@ void loop() {
  }
 ```
 
-## Lab-4(OLED)
+
+
+## Lab 4: Dimming multiple LEDs
+
+ESP32 GPIO pins were used to dim multiiple LEDs with different delays.
+
+![d2360516-8034-4558-91b5-4f4b3313295e](https://github.com/user-attachments/assets/816c42e8-678d-4443-aa0a-1899a5a82114)
+
+Parameter for the LED Datashet
+
+| parameters | value |
+|------------|-------|
+|MAX Forward Current|30mA|
+|Forward Voltage|1.85V|
+|Dominant Wavelength|640nm|
+|Colour|Red|
+|Total Capacitance|  45pF |
+|Operating Range|-45 to 85C|
+
+```C
+#define LED1 2
+#define LED2 4
+#define LED3 5
+#define LED4 18
+#define LED5 19
+
+// Array to hold LED pin numbers
+int leds[] = {LED2, LED3, LED4, LED5};
+
+// Corresponding delays for each LED
+int delays[] = {1000, 700, 100, 500};
+
+void setup() {
+  pinMode(LED1, OUTPUT); // LED1 is not used in loop, so just initialized here
+  for (int i = 0; i < sizeof(leds) / sizeof(leds[0]); i++) {
+    pinMode(leds[i], OUTPUT);
+  }
+}
+
+void loop() {
+  for (int i = 0; i < sizeof(leds) / sizeof(leds[0]); i++) {
+    digitalWrite(leds[i], HIGH);
+    delay(delays[i]);
+    digitalWrite(leds[i], LOW);
+    delay(50); // Common delay after each LED blinks
+  }
+}
+```
+
+## Lab 5: Printing data in the serial monitor
+-**Serial Monitor** is an essential tool when creating projects with Arduino. It can be used as a debugging tool, testing concepts, or communicating directly with the Arduino board.
+-The **Arduino IDE 2** has the Serial Monitor tool integrated with the editor, which means that no external window is opened when using the Serial Monitor. This means that you can have multiple windows open, each with its own Serial Monitor.
+
+
+
+## Lab 6: Controlling an LED through serial monitor
+
+Controlling an LED connected to ESP32 by reading commands from the serial monitor and turning the LED on or off based on those commands.
+
+```c
+//ESP32 TO serial monitor
+#define LED 2
+
+void setup(){
+  Serial.begin(9600);
+pinMode(LED, OUTPUT);
+}
+
+void loop(){
+  if(Serial.available()){
+    String command = Serial.readStringUntil('\n');
+    
+    if(command == "ON"){
+      digitalWrite(LED, HIGH);
+      Serial.println("Turn LED ON ");
+    }
+    else if (command == "OFF"){
+      digitalWrite(LED, LOW);
+      Serial.println("Turn LED OFF");
+
+    }
+  }
+
+  
+}
+```
+
+## Lab 7: I2C-based OLED Display control
+
+I2C-based OLED pin details. Importing OLED libraries. Structure of the OLED. Displaying simple Text and Scrolling Text in different ways.
+
+![cc4428ab-5a48-4624-ba07-d3a0e69c871d](https://github.com/user-attachments/assets/20e2e48b-122f-42df-bcb7-cf429225e76f)
 
 ```C
 #include<SPI.h>
@@ -396,7 +469,25 @@ delay(2000);
 }
 void loop(){}
 ```
-## Lab-5(Temperature Sensor)
+
+## Lab 8: Introduction Signal Processing using Python
+You can use lab1-fft.py and lab2-fsk.py as reference for the following exercises:
+Write a python program to create a cosine wave of frequency 2MHz with 256 samples per cycle.
+Plot it with proper annonation and axis labeling.
+Compute the FFT of the above signal and plot it.
+You will notice the FFT resolution is very limited for a single cycle.
+Create another a signal of frequency 3MHz, add it to above signal and do FFT for the resultant signal.
+Simulate lab2-fsk.py and anlayze the plot to understand FSK modulation.
+Change the code such that the modulation frequency for 1 is 4MHz and for 0 it is 3MHz.
+Change the above code to simulate ASK modulation.
+Add demodulation to the above code and plot the time-domain waveform, as well as the FFT of the demodulated signal.
+Add a moving average filter to remove the high-frequency component from the demodulated signal.
+
+
+## Lab 9: I2C temperature sensor interface
+
+![cf5729a0-1bd2-4b48-b892-6fc4948ee1ed](https://github.com/user-attachments/assets/65251995-6613-4899-8ec7-0e96cfb8c69b)
+
 ```c
 #include<Wire.h>
 #include<Adafruit_GFX.h>
@@ -465,8 +556,47 @@ display.display();
 }
 ```
 
-## Lab-6(Introduction to LoRa )
+## Lab 10: Introduction to LoRa module
+
+Introduction to architecture and pin configuration of Ra-02 Lora transceiver module and SPI (Serial Peripheral Interface) communication.
+
+Key Features
+-Long Range: Achievable distances from several kilometers up to 15 km or more.
+-Low Power: Suitable for battery-operated devices, often using deep sleep modes.
+-Low Data Rate: Typically supports data rates from 0.3 kbps to 50 kbps, which is sufficient for many IoT applications.
+
+**Connect the LoRa module to your ESP32 (e.g., using SPI pins).**
+
+|Module Pin	|Arduino Pin|
+|-----------|-----------|
+|VCC|3.3V|
+|GND|GND|
+|SCK|Pin 13|
+|MOSI|Pin 11|
+|MISO|Pin 12|
+|NSS|Pin 10|
+|RESET|Pin 9|
+|DIO0|Pin 2|
+
+**Ra-02 (SX1278)**
+
+Frequency: 433/868/915 MHz
+Range: Up to 15 km in rural areas
+Interface: SPI
+Commonly used with Arduino and ESP32.
+
+
+## Lab 11: LoRa communication
+Introduction to Lora communication using Ra-02 Lora transceiver module with ESP32.
+
+## Lab 12: Communication between two LoRa nodes
+
+Sending Text packets and receiving the text packets with *RSSI (Received Signal
+Strength Indicator)* and SNR through Serial monitor.
+Sending Temperature and humidity packets and receiving the same packets with RSSI (Received Signal Strength Indicator) and SNR through a Serial monitor as well as an OLED display.
+
 ### Programming for transmission
+
 ```c
 #include<SPI.h>
 #include<LoRa.h>
@@ -592,3 +722,67 @@ void loop() {
     Serial.println("C");
   }
 ```
+
+## Lab 13: LoRa one-to-many communication setup
+
+Sending data packets from one Lora transmitter to multiple Lora receivers and retracing the same packets.
+
+## Lab 14: Introduction to antenna modeling and simulation software 4NEC2.
+
+## Lab 15: Physical design of Dipole and V-dipole antennas
+
+Tune it to 433MHz with the help of NanoVNA-A Portable VNA Antenna Analyzer Kit with 10KHz-1.5GHz, 2.8 Inch Digital LCD Display Touching Screen Standing Wave Measuring Instrument.
+
+
+CM Example new :	Loaded dipole in free space
+CM 		antenna design.txt
+CE 					' End of comment
+'
+
+
+SY ylen=.1392				' Symbol: Length for WL/2
+SY zlen=.0975
+SY ysma=.004095
+SY zsma=.002867	
+'
+
+
+GW  1  9  0  -ylen   zlen   0  -ysma  zsma   .0001	' Wire 1, 9 segments, halve wavelength long.
+GW  2  9  0   ysma   zsma   0   ylen  zlen   .0001	' Wire 2, 9 segments, halve wavelength long.
+GW  3  1  0  -ysma   zsma   0   ysma  zsma   .0001	' Wire 3, 9 segments, halve wavelength long
+GE  0					' End of geometry
+'
+
+
+LD 5 1 0 0 5.8001E7			' Wire conductivity
+LD 5 2 0 0 5.8001E7			
+LD 5 3 0 0 5.8001E7			
+
+
+'
+
+
+EX 0 3 1 0 1 0				' Voltage source (1+j0) at wire 1 segment 5.
+
+
+
+FR 0 1 0 0 433 0			' Set design frequency (433 Mc).
+
+EN					' End of NEC input
+
+
+## Lab 16: Introduction to TinyGS
+
+**TinyGS** is a lightweight, open-source ground station software designed for receiving LoRaWAN and other types of satellite signals. It allows users to connect easily and manage their own ground station for satellite communication.
+https://tinygs.com/
+
+**Key Features**
+
+Lightweight: Optimized for performance on small hardware platforms.
+Open Source: Community-driven, enabling contributions and modifications.
+Flexible Configuration: Easily configure to work with different satellites and protocols.
+Real-time Monitoring: Provides live data reception and monitoring capabilities.
+
+
+## Lab 17: Setting up a TinyGS ground station
+
