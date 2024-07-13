@@ -31,7 +31,7 @@ CubeSats are a class of nanosatellites that use a standard size and form factor.
   <li>Flexible services(CubeSats can be used for different missions and purposes).</li>
 </ul>
 
-## History
+## History📖
 The CubeSat concept originated in the late 1990s as a collaborative effort between Stanford University's Space Systems Development Laboratory (SSDL) and California Polytechnic State University (Cal Poly). Professors Bob Twiggs (Stanford) and Jordi Puig-Suari (Cal Poly) proposed the idea of a standardized, small satellite format to enable affordable space access for universities and other entities.
 
 ## CubeSat dispenser system
@@ -40,7 +40,7 @@ The CubeSat concept originated in the late 1990s as a collaborative effort betwe
 A CubeSat dispenser system is a critical component used to deploy CubeSats into orbit from a host satellite or launch vehicle. These systems are designed to securely hold CubeSats of various sizes, conforming to standard dimensions like 1U, 2U, or 3U, and ensure their safe release once the host satellite reaches its designated orbit. Integrated into the payload configuration of the launch vehicle, CubeSat dispensers typically employ mechanisms such as springs, pneumatic actuators, or mechanical latches to eject CubeSats at specified velocities and orientations. This controlled deployment process not only facilitates efficient utilization of launch vehicle payload capacity but also enables multiple CubeSats to be deployed in sequence, supporting diverse mission objectives including scientific research, Earth observation, technology demonstration, and educational initiatives. By simplifying and standardizing the deployment process, CubeSat dispenser systems contribute significantly to the accessibility and cost-effectiveness of space missions involving CubeSats.
 
 
-## Layers of CubeSat
+## **Layers of CubeSat**
 ![Screenshot 2024-07-11 160347](https://github.com/DonaldB2003/SI-2024-CubeSat-SU/assets/173866002/d08f1305-1be7-4f56-8325-a75a60d7d034)
 <ul>
   <li>layer 1-Antenna</li>
@@ -50,6 +50,28 @@ A CubeSat dispenser system is a critical component used to deploy CubeSats into 
   <li>layer 5-power management system</li>
   <li>layer 6-magnet and battery</li>
 </ul>
+
+## Development Process Overview 📊
+
+The overall timeframe can vary depending on the launch vehicles selected and what you are trying to accomplish with your CubeSat.
+A CubeSat can be designed,bulit,tested and delivered in as little as 6 months,but it takes typically,18 to 24 months to complete. Once your CubeSat is delivered,the typical time to launch is anywhere from few months to few years.This is obviously affected by the availability of launch oppurtunities,but also by the feasibilty of your orbital requirements-the more flexible,the easier to manifest,and therefore the shorter wait.
+Launch vehicles will usually require you to deliver your finished CubeSat between 4 to 6 months,prior to launch.
+The project phases are as follows:
+-  Concept Development(1-6 Months)
+-  Securing Fundings (1-12 Months)
+-  Merit and Feasibility Review(1-2 Months)
+-  CubeSat Design(1-6 Months)
+-  Development and Submittal of Proposal in response to CLSI call.(3-4 Months)
+-  Selection and Manifesting(1-36 Months)
+-  Mission Co-ordination(9-18 Months)
+-  Licensing(4-6 Months)
+-  Flight Specific Documentation and Development and Submittal(10-12 Months)
+-  Groundstation Designs Development and Testing(2-12 Months)
+-  CubeSat Hardware Fabrication and Testing(2-12 Months)
+-  Mission Readiness Review(1/2 Day)
+-  CubeSat to Dispenser Integration and Testing(1 Day)
+-  Launch(1 Day)
+-  Mission Operation(variable,upto 20 years)
 
 ## Block Diagram For communication
 
@@ -82,8 +104,9 @@ A CubeSat dispenser system is a critical component used to deploy CubeSats into 
 
 **Clock Phase (CPHA):** Determines whether data is sampled on the leading or trailing edge of the clock pulse.
 
+![phpcyBPrf](https://github.com/user-attachments/assets/2cd8e3ca-968f-4e12-8fae-2cf9d917a402)
 
-Advantages:
+**Advantages:**
 
 - High speed: SPI can achieve high data transfer rates compared to other serial communication protocols.
 - Simple hardware implementation: Requires minimal pins for communication.
@@ -117,14 +140,6 @@ ESP-32
 ![ESP32 BLOCK](https://github.com/DonaldB2003/SI-2024-CubeSat-SU/assets/173866002/5ec3834a-2b5e-4f80-9f7a-1f6c9c4a9648)
 
 
-# WAVE GENERATION
-|x|e^-x|1-e^-x|
-|-|----|------|
-|0.001|0.99|9.95x10^-3|
-|0.1|0.90|0.095|
-|1|0.36|0.63|
-|10|4.53x10^-5|0.99|
-|100|3.72x10^-44|1|
 
 # Electromagnetic Spectrum
 
@@ -171,29 +186,27 @@ Refers to radio frequencies ranging from 300 MHz to 3 GHz. UHF frequencies are u
   <li>Frequency Allocation & Radiation</li>
 </ul>
 
-# SATELLITE FUNDAMENTALS 
--  Satellite Orbit Kepeler`s Law
--  veleocity from the centre of earth
--  path Loss(dB)
 
-# 4 Types of Orbit
+# Orbits🚀
+
+## 4 Types of Orbit
 
 There are several types of orbits that objects can follow around celestial bodies such as planets or stars.
 
 ![image](https://github.com/DonaldB2003/SI-2024-CubeSat-SU/assets/173866002/58fa41f0-29e9-4ad9-97f9-1c96d9a23d9c)
 
-##Here are four common types of orbits:
+### Here are four common types of orbits:
 
--  Low Earth Orbit (LEO):
+-  **Low Earth Orbit (LEO):**
 Orbits at altitudes typically between 160 kilometers (100 miles) and 2,000 kilometers (1,200 miles) above the Earth's surface. LEO is used by many satellites for Earth observation, communication, and scientific research.
 
--  Geostationary Orbit (GEO):
+-  **Geostationary Orbit (GEO):**
 Orbits at an altitude of approximately 35,786 kilometers (22,236 miles) above the equator. Satellites in GEO orbits remain fixed relative to a point on Earth's surface, making them ideal for communication and weather satellites.
 
--  Polar Orbit:
+-  **Polar Orbit:**
 Passes over Earth's poles, allowing satellites to observe the entire surface of the Earth over time as the planet rotates beneath the orbit. Polar orbits are used for Earth observation, mapping, and scientific research.
 
--  Heliocentric Orbit:
+-  **Heliocentric Orbit:**
 Orbits around the Sun rather than a planet. Planets, comets, and asteroids follow heliocentric orbits within our solar system. Spacecraft such as those sent to explore other planets or to study the Sun also follow heliocentric orbits.
 
 "These different orbits serve various purposes depending on the mission objectives, including communication, Earth observation, scientific exploration, and more"
@@ -203,20 +216,17 @@ Orbits around the Sun rather than a planet. Planets, comets, and asteroids follo
 Antennas are devices used to transmit and receive electromagnetic waves, typically in the radio frequency (RF) range. They come in various types, each designed for specific applications based on factors like frequency range, directivity, and physical size
 
 ## Radiation
+![OIP](https://github.com/user-attachments/assets/2609d44a-ab6f-49f1-b424-11b3af1949d1)
 
 Radiation refers to energy that travels through space in the form of waves or particles. It can be categorized into ionizing radiation (such as X-rays and gamma rays) and non-ionizing radiation (like radio waves and visible light). Ionizing radiation has enough energy to remove tightly bound electrons from atoms, potentially causing damage to living tissues and DNA. Understanding and managing exposure to radiation is crucial in fields such as medicine, energy production, and space exploration.
 
 ## Mechanism Of Radiation
 
-If a charge is not moving, current is not created and there is no radiation.
-
-If charge is moving with a uniform velocity:
-
-There is no radiation if the wire is straight, and infinite in extent.
-
-There is radiation if the wire is curved, bent, discontinuous, terminated, or truncated.
-
-If charge is oscillating in a time-motion, it radiates. even if the wira is straight.
+-  If a charge is not moving, current is not created and there is no radiation.
+-  If charge is moving with a uniform velocity:
+-  There is no radiation if the wire is straight, and infinite in extent.
+-  There is radiation if the wire is curved, bent, discontinuous, terminated, or truncated.
+-  If charge is oscillating in a time-motion, it radiates. even if the wira is straight.
 
 ## Two Wire Antenna and free space
 
@@ -231,47 +241,65 @@ If charge is oscillating in a time-motion, it radiates. even if the wira is stra
 
 ![OIP](https://github.com/user-attachments/assets/e2704399-78f4-4756-a47c-f152ce06c322)
 
-### Dipole Antenna:
+-  **Dipole Antenna:**
+  
+![3ba1d7c4-a7f7-43bf-b5c1-a931ddcbce63](https://github.com/user-attachments/assets/b7508f4c-2fbd-45d5-a023-916cfb11c375)
 
 Consists of two conductive elements (rods or wires) oriented in a straight line.
 Simple and widely used for radio and television broadcasting, as well as in Wi-Fi routers.
 
-### Yagi-Uda Antenna:
+-  **Yagi-Uda Antenna:**
+  
+![download](https://github.com/user-attachments/assets/b8078ef3-373a-405e-b790-2e4fedcd30b5)
 
 Consists of multiple parallel elements (one driven element, one or more reflectors, and one or more directors).
 Directional antenna used for long-distance communication, such as TV reception and amateur radio.
 
-### Horn Antenna:
+-  **Horn Antenna:**
+  
+![download](https://github.com/user-attachments/assets/bc3245d0-c6be-41c5-877b-d64b0c47176a)
 
 Shaped like a pyramidal or conical horn.
 Used for microwave frequencies, radar systems, and satellite communication due to its wide bandwidth and high gain.
 
-### Parabolic Reflector Antenna:
+-  **Parabolic Reflector Antenna:**
+  
+![OIP](https://github.com/user-attachments/assets/422e3142-1616-412e-9487-1265bc695318)
 
 Consists of a large dish-shaped reflector and a small feed antenna at the focal point.
 Provides high gain and is used for satellite communication, radio telescopes, and radar.
 
-### Patch Antenna:
+-  **Patch Antenna:**
+ 
+![OIP](https://github.com/user-attachments/assets/4d8acfa9-ef49-4adb-8583-e41d66c230df)
 
 Flat, rectangular antenna made on a printed circuit board.
 Commonly used in mobile devices (like cell phones) and Wi-Fi routers due to their compact size and ease of integration.
 
-### Loop Antenna:
+-  **Loop Antenna:**
+ 
+![OIP](https://github.com/user-attachments/assets/1b9aff37-3ceb-423f-bb0c-e5be18560d3b)
 
 Consists of a loop of wire or conductor.
 Used for receiving signals in AM radios and magnetic field sensing applications.
 
-### Log-Periodic Antenna:
+-  **Log-Periodic Antenna:**
+  
+![download](https://github.com/user-attachments/assets/d9d858ce-08a8-443e-89a1-afa62242a68b)
 
 Consists of multiple dipole elements of varying lengths.
 Provides a wide bandwidth and is used in broadband communication systems and television antennas.
 
-### Helical Antenna:
+-  **Helical Antenna:**
+  
+![OIP](https://github.com/user-attachments/assets/f402acba-fd52-4a29-8ca0-02c3718ebd4c)
 
 Consists of a helix-shaped wire or conductor wound in a coil.
 Used in satellite communication, GPS, and amateur radio due to its circular polarization and compact size.
 
-### Microstrip Antenna:
+-  **Microstrip Antenna:**
+  
+![OIP](https://github.com/user-attachments/assets/edc265ac-ac75-4a22-adca-b2acb1186258)
 
 Made from a thin metal patch on a dielectric substrate.
 Used in mobile phones, GPS devices, and wireless communication systems due to their low profile and ease of integration.
