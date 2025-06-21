@@ -1273,7 +1273,7 @@ https://api.tinygs.com/v1/tinygs_supported.txt
 **Write a Python programm to conver a TLE of satellite into a Lat/Long location.**
 
 ```py
-rom skyfield.api import EarthSatellite, load
+from skyfield.api import EarthSatellite, load
 from datetime import datetime
 import time
 import webbrowser
