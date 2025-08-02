@@ -40,7 +40,7 @@ The CubeSat concept originated in the late 1990s as a collaborative effort betwe
 A CubeSat dispenser system is a critical component used to deploy CubeSats into orbit from a host satellite or launch vehicle. These systems are designed to securely hold CubeSats of various sizes, conforming to standard dimensions like 1U, 2U, or 3U, and ensure their safe release once the host satellite reaches its designated orbit. Integrated into the payload configuration of the launch vehicle, CubeSat dispensers typically employ mechanisms such as springs, pneumatic actuators, or mechanical latches to eject CubeSats at specified velocities and orientations. This controlled deployment process not only facilitates efficient utilization of launch vehicle payload capacity but also enables multiple CubeSats to be deployed in sequence, supporting diverse mission objectives including scientific research, Earth observation, technology demonstration, and educational initiatives. By simplifying and standardizing the deployment process, CubeSat dispenser systems contribute significantly to the accessibility and cost-effectiveness of space missions involving CubeSats.
 
 
-## **Layers of CubeSat**
+## **CubeSat Components and Structure**
 ![Screenshot 2024-07-11 160347](https://github.com/DonaldB2003/SI-2024-CubeSat-SU/assets/173866002/d08f1305-1be7-4f56-8325-a75a60d7d034)
 <ul>
   <li>layer 1-Antenna</li>
