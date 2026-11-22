@@ -1349,7 +1349,7 @@ if _name_ == "_main_":
 
     Enter line 2: 2 57794  49.9717 238.8296 0014532 317.7298  42.2493 14.22337202 44201
 
-**Generate the output as an URL that you can paste in a browser and get the satellite location.**
+**Generates the output as an URL that you can paste in a browser and get the satellite location.**
 
 https://www.google.com/maps/place/25%C2%B024'17.5%22N+30%C2%B015'50.8%22W/@25.4048723,-30.2641009,17z/data=!3m1!4b1!4m4!3m3!8m2!3d25.4048723!4d-30.2641009?entry=ttu
 
